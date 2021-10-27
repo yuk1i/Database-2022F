@@ -70,6 +70,12 @@ username=postgres
 password=postgres
 ```
 
+### Tips
+
+Please create database with `UTF8` encoding and `en_US.UTF8` locale, or you may encounter ordering bugs.
+
+See: https://github.com/NewbieOrange/SUSTech-SQL-Project2-Public/issues/88
+
 ### Additional requirements of interface
 
 #### Java
