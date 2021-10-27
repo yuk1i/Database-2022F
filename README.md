@@ -4,9 +4,7 @@
 
 Download link：
 
-For java: https://github.com/NewbieOrange/SUSTech-SQL-Project2-Public
-
-For python: https://github.com/ziqin/SUSTech-CS307-Project2-Python
+https://mirrors.sustech.edu.cn/git/sustech-2021fall-db/sustech-sql-project
 
 ### Interface Specification
 
@@ -72,7 +70,7 @@ password=postgres
 
 ### Tips
 
-Please create database with `UTF8` encoding and `en_US.UTF8` locale, or you may encounter ordering bugs.
+Please create database with `C` encoding and `C` locale, or you may encounter ordering bugs.
 
 See: https://github.com/NewbieOrange/SUSTech-SQL-Project2-Public/issues/88
 
@@ -87,14 +85,6 @@ See: https://github.com/NewbieOrange/SUSTech-SQL-Project2-Public/issues/88
 - Your implementation should throw `java.lang.UnsupportedOperationException` if a method is not actually implemented,
   so the tests can fail quickly.
 
-#### Python
-- All `add*()` functions with return value of int should return the (presumably auto-generated) ID.
-- All arguments are guaranteed to follow the type hints. Arguments passed won't be `None` unless explicitly annotated
-  with `Optional`.
-- For return types with type hints, return values (and their fields) should not be `None`, unless explicitly documented.
-  Use `[]`, `{}`, `set()` or their equivalents instead of `None` for empty container in return values.
-- Your implementation should raise `NotImplementedError` if a method is not actually implemented, so that tests can
-  fail quickly.
 
 ### Rules
 
@@ -111,10 +101,6 @@ See: https://github.com/NewbieOrange/SUSTech-SQL-Project2-Public/issues/88
 - In this project, we use Maven to manage dependent libraries. If you want to introduce a new library, you need to
   record it in `pom.xml`. Your dependencies should be downloadable from the Maven Central repository.
 
-#### Python-specific rules
-
-TO BE ADDED
-
 
 ## 2. What to submit?
 
@@ -125,7 +111,6 @@ TO BE ADDED
 - The jar file built using maven-assembly (Run `IDEA-Maven-Plugins-assembly-single`)
   in `/target/xxxx-with-dependencies.jar`.
 
-### If you are using Python:
 
 ## 3. What to deliver?
 
@@ -162,6 +147,6 @@ TO BE ADDED
 
 ### Project Timeline
 
-Code Submission Deadline: **June 6th**
+Code Submission Deadline: **December 31th**
 
-Presentation Time: **June 15th** by Tencent Meeting
+Presentation Time: **December 31th** in Lab class
