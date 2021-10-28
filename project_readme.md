@@ -142,8 +142,7 @@ Make a zip **(NOT RAR)** file of 1 and 2, and submit this zip file and a pdf rep
 
 
 
-Each group member should only submit one copy on BlackBoard.
-
+Only one copy of each group should be submitted on BlackBoard.
 
 
 ## Tips
@@ -179,7 +178,7 @@ Each group member should only submit one copy on BlackBoard.
    
 4. It is recommended to use git to manage group collaboration.
 
-5. How to calculate the number of weeks during two day?
+5. How to calculate the number of weeks during two days?
 
    It's recommended to use the following SQL code:
 

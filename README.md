@@ -8,8 +8,6 @@ https://mirrors.sustech.edu.cn/git/sustech-2021fall-db/sustech-sql-project
 
 ### Interface Specification
 
-We provide the interfaces code in two language (Java, Python). You can use either of them upon your preference. Notice
-that due to the inherent differences between these two language, the **Score Policy** may also be different.
 
 The structure of the interfaces is as follows.
 
@@ -110,17 +108,8 @@ and https://stackoverflow.com/questions/43890221/column-sorting-in-postgresql-is
   record it in `pom.xml`. Your dependencies should be downloadable from the Maven Central repository.
 
 
-## 2. What to submit?
 
-### If you are using Java:
-
-- The entire Java repository (all source codes and configs, without the `target` folder).
-- The database dump from `pg_dump` without data in tables (by adding `-s` argument to `pg_dump`).
-- The jar file built using maven-assembly (Run `IDEA-Maven-Plugins-assembly-single`)
-  in `/target/xxxx-with-dependencies.jar`.
-
-
-## 3. What to deliver?
+## 2. What to deliver?
 
 - **PASS BASE TEST:** First and foremost, you should pass the base testcases, this is the basic requirement.
 
