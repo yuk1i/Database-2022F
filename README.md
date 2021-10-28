@@ -70,9 +70,17 @@ password=postgres
 
 ### Tips
 
-Please create database with `C` encoding and `C` locale, or you may encounter ordering bugs.
+Please create database with `C` locale, which provides the platform-independent sorting result.
 
-See: https://github.com/NewbieOrange/SUSTech-SQL-Project2-Public/issues/88
+Here is a sample commands:
+
+```sql
+CREATE DATABASE project2 WITH ENCODING='UTF8' LC_COLLATE = 'C';
+```
+
+See https://github.com/NewbieOrange/SUSTech-SQL-Project2-Public/issues/88,  
+
+and https://stackoverflow.com/questions/43890221/column-sorting-in-postgresql-is-different-between-macos-and-ubuntu-using-same-co
 
 ### Additional requirements of interface
 
