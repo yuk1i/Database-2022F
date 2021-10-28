@@ -1,6 +1,7 @@
 package cn.edu.sustech.cs307.factory;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class ServiceFactory {
@@ -30,4 +31,6 @@ public abstract class ServiceFactory {
     protected <T> void registerService(Class<T> serviceClass, T implementationInstance) {
         services.put(serviceClass, implementationInstance);
     }
+
+    public abstract List<String> getUIDs();
 }
