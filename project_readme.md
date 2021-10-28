@@ -50,7 +50,7 @@ https://mirrors.sustech.edu.cn/git/sustech-2021fall-db/sustech-sql-project
 
 **Step 1:** Open Project in IDEA.
 
-<img src="assets/image-20211028001050661.png" alt="image-20211028001050661" style="zoom:50%;" />
+<img src="document_assets/image-20211028001050661.png" alt="image-20211028001050661" style="zoom:50%;" />
 
 **Step 2:** Design your database.
 
@@ -58,23 +58,23 @@ Please make sure your database can **be rebuilt by the sql file and work properl
 
 **Step 3:** Create your package and classes that implement interfaces in `cn.edu.sustech.cs307.service`.
 
-<img src="assets/image-20211028001553146.png" alt="image-20211028001553146" style="zoom:40%;" />
+<img src="document_assets/image-20211028001553146.png" alt="image-20211028001553146" style="zoom:40%;" />
 
-<img src="assets/image-20211028002001639.png" alt="image-20211028002001639" style="zoom:30%;" />
+<img src="document_assets/image-20211028002001639.png" alt="image-20211028002001639" style="zoom:30%;" />
 
 **Step 4**: Create your Factory that extends from `cn.edu.sustech.cs307.factory.ServiceFactory` and register your service implements in the constructor:
 
 Take CourseService as an example:
 
-<img src="assets/image-20211028002140159.png" alt="image-20211028002140159" style="zoom:50%;" />
+<img src="document_assets/image-20211028002140159.png" alt="image-20211028002140159" style="zoom:50%;" />
 
 After registering all implementation:
 
-<img src="assets/image-20211028002510830.png" alt="image-20211028002510830" style="zoom:50%;" />
+<img src="document_assets/image-20211028002510830.png" alt="image-20211028002510830" style="zoom:50%;" />
 
 For better judgment, please override `getUIDs` in your `ServiceFactory` implementation. These functions should return your group members' student ids:
 
-<img src="assets/image-20211028163139023.png" alt="image-20211028163139023" style="zoom:40%;" />
+<img src="document_assets/image-20211028163139023.png" alt="image-20211028163139023" style="zoom:40%;" />
 
 
 
@@ -151,7 +151,7 @@ Each group member should only submit one copy on BlackBoard.
 1. How to check the locale of a database:
    Connect to the database in Postgres shell, run command `show all;` , then find the keyword locale:
 
-   <img src="assets/image-20211028165344089.png" alt="image-20211028165344089" style="zoom:50%;" />
+   <img src="document_assets/image-20211028165344089.png" alt="image-20211028165344089" style="zoom:50%;" />
 
 2. How should I know where I am wrong?
 
@@ -161,7 +161,7 @@ Each group member should only submit one copy on BlackBoard.
 
    For example, you can modify the `ProjectJudge` and dto classes to print your wrong test cases:
 
-   ![image-20211028165916671](assets/image-20211028165916671.png)
+   ![image-20211028165916671](document_assets/image-20211028165916671.png)
 
    However, DO NOT TRY TO modify the test cases or the judger to make your code "correct". We are not idiots.
 
