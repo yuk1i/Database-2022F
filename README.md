@@ -155,6 +155,6 @@ and https://stackoverflow.com/questions/43890221/column-sorting-in-postgresql-is
 
 ### Project Timeline
 
-Code Submission Deadline: **December 31th**
+Code Submission Deadline: **December 31st, 2021 18:30**
 
-Presentation Time: **December 31th** in Lab class
+Presentation Time: **December 31st, 2021** in Lab class
