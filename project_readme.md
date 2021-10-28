@@ -132,7 +132,7 @@ The integer after each test case is the number of your correct result. Your prog
 
 2. One SQL file, we will use this file to rebuild your database in the server.
 
-   **Please read the following description about this SQL file**
+   **Please read Tip.3 about this SQL file**
 
    Please make sure your database can **be rebuilt by the SQL file and work properly**.
 
@@ -167,3 +167,12 @@ Each group member should only submit one copy on BlackBoard.
 
 3. How to generate the SQL file that ensure database is fully rebuildable?
 
+   Right click the schema of your project database, click ``SQL Generator`` in ``SQL Scripts``.
+
+   <img src="document_assets/image-20211028173126946.png" alt="image-20211028173126946" style="zoom:50%;" />
+
+   Please make sure your settings are consistent with the following image:
+
+   <img src="document_assets/image-20211028180741756.png" alt="image-20211028180741756" style="zoom:50%;" />
+
+   Then you can copy the generated SQL, which contains all tables, indexes, and functions.
