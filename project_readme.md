@@ -176,3 +176,17 @@ Each group member should only submit one copy on BlackBoard.
    <img src="document_assets/image-20211028180741756.png" alt="image-20211028180741756" style="zoom:50%;" />
 
    Then you can copy the generated SQL, which contains all tables, indexes, and functions.
+   
+4. It is recommended to use git to manage group collaboration.
+
+5. How to calculate the number of weeks during two day?
+
+   It's recommended to use the following SQL code:
+
+   ```sql
+   SELECT (floor((day_end - day_start) / 7.0)::integer + 1) AS weekoffset;
+   ```
+
+   
+
+   
