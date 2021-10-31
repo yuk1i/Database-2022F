@@ -25,7 +25,7 @@ Import time usage: 2.46s
 Test search course 1: 1000
 Test search course 1 time: 0.53s
 Test enroll course 1: 1000
-Test enroll course 1 time: 0.30s
+Test enroll course 1 time: 0.29s
 Test drop enrolled course 1: 813
 Test drop enrolled course 1 time: 0.03s
 Import student courses
@@ -33,8 +33,8 @@ Import student courses time: 14.19s
 Test drop course: 416637
 Test drop course time: 4.75s
 Test course table 2: 1000
-Test course table 2 time: 0.72s
+Test course table 2 time: 0.17s
 Test search course 2: 1000
 Test search course 2 time: 0.48s
 Test enroll course 2: 1000
-Test enroll course 2 time: 0.17s
+Test enroll course 2 time: 0.16s
