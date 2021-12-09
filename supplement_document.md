@@ -29,6 +29,10 @@ lab课答辩: **December 31, lab课**
 
 4. 压缩包文件名：提交者学号.zip
 
+5. 请勿手动导入jar包，请使用maven
+
+   In this project, we use Maven to manage dependent libraries. If you want to introduce a new library, you need to record it in pom.xml. Your dependencies should be downloadable from the Maven Central repository.
+
 
 
 ### 评分标准
@@ -70,7 +74,7 @@ CPU: Intel Xeon Gold 6240 (16) @ 2.600GHz
 RAM: 32G
 IO: Unknown
 PostgreSQL: 14 (docker)
-OpenJDK 11
+OpenJDK 17
 
 >java -version 
 >openjdk version "11.0.11" 2021-04-20 
@@ -96,5 +100,5 @@ OpenJDK 11
 
 2. 如何确保我的数据库能在服务器上正确构建
 
-   按照 Tips 中导出数据库结构，然后在新建一个数据库，将表结构导入新库中，修改 config.propoties，让程序在新库上正常跑
+   按照 Tips 中导出数据库结构，然后在新建一个数据库，将表结构导入新库中，修改 config.properties，让程序在新库上正常跑
 
