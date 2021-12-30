@@ -1,4 +1,3 @@
-
 # 2021 Fall CS307 Project 2 补充文档
 
 
@@ -25,7 +24,7 @@ lab课答辩: **December 31, lab课**
    2. 删除项目中的文档 project_readme.md, README.md, document_assets
    3. 选中在项目根目录下的所有文件，7-Zip -> Add to "xxx.zip"
 
-   <img src="/home/luvletter/.config/Typora/typora-user-images/image-20211209163514842.png" alt="image-20211209163514842" style="zoom:67%;" />
+   <img src="assets/image-20211209163514842.png" style="zoom:67%;" />
 
 4. 压缩包文件名：提交者学号.zip
 
