@@ -68,7 +68,7 @@ password=postgres
 
 ### Tips
 
-Please create database with `C` locale, which provides the platform-independent sorting result.
+Please create database with `LC_COLLATE='C'`, which provides the platform-independent sorting result.
 
 Here is a sample commands:
 
