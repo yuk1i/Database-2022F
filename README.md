@@ -70,7 +70,7 @@ password=postgres
 
 Please create database with `LC_COLLATE='C'`, which provides the platform-independent sorting result.
 
-Here is a sample commands:
+Here is a sample command:
 
 ```sql
 CREATE DATABASE project2 WITH ENCODING='UTF8' LC_COLLATE = 'C';
