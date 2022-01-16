@@ -72,7 +72,7 @@ After registering all implementation:
 
 <img src="document_assets/image-20211028002510830.png" alt="image-20211028002510830" style="zoom:50%;" />
 
-For better judgment, please override `getUIDs` in your `ServiceFactory` implementation. These functions should return your group members' student ids:
+For better judgment, please override `getUIDs` in your `ServiceFactory` implementation. This function should return your group members' student ids:
 
 <img src="document_assets/image-20211028163139023.png" alt="image-20211028163139023" style="zoom:40%;" />
 
