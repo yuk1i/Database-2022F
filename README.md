@@ -4,27 +4,30 @@
 
 Download link：
 
-https://mirrors.sustech.edu.cn/git/sustech-2021fall-db/sustech-sql-project
-
 ### Interface Specification
-
 
 The structure of the interfaces is as follows.
 
 - `database` folder stores connection information such as username, password, url, we only provides `PostgreSQL` as the DBMS.
-- `dto` folder stores a set of data objects that will be accessed by interfaces. Your implementation will use them as parameters or returned values.
-- `service` folder stores **Service Interfaces**, this is the folder you should pay special attention to. There exist multiple `.java` file where the interface signatures are stored. You need to implement you own `class` to fit these signatures.
+- `dto` folder stores a set of data objects that will be accessed by interfaces. Your implementation will use them as
+  parameters or returned values.
+- `service` folder stores **Service Interfaces**, this is the folder you should pay special attention to. There exist
+  multiple `.java` file where the interface signatures are stored. You need to implement you own `class` to fit these
+  signatures.
 - `exception` folder stores exceptions that you should `throw` if something went wrong.
-- `factory` folder stores the `ServiceFactory` abstract class that you need to implement to create your service instances.
+- `factory` folder stores the `ServiceFactory` abstract class that you need to implement to create your service
+  instances.
 
 ### Your Tasks
 
+- Design your PostgreSQL database.
 - Implement the `service` and `factory` interfaces to pass the base testcases.
-- Design your (PostgreSQL) database to satisfy the requirements of interfaces.
 - Profile your implementation and find ways to speed it up.
-- (Optional) Find other ways to implement similar functionalities as our interfaces and compare (some of) them, are they better, worse or have different use cases. 
 
-Here is a reference implementation, it shows you how to implement one method of an interface. To get a service working, you'll have to implement **all its interfaces**
+Please checkout [project_guide.md](project_guide.md) for initial guidance.
+
+Here is a reference implementation, it shows you how to implement one method of an interface. To get a service working,
+you'll have to implement **all its interfaces**
 
 *The following code is just a guide, the code interacts with database will usually be written in the DAO layer*
 
@@ -49,15 +52,57 @@ public class ReferenceStudentService implements StudentService {
 
 ```java
 public class ReferenceServiceFactory extends ServiceFactory {
-    public ReferenceServiceFactory() {
-        registerService(StudentService.class, new ReferenceStudentService());
-        registerService(CourseService.class, new ReferenceCourseService());
-        // registerService(<interface name>.class, new <your implementation>());
-    }
+  public ReferenceServiceFactory() {
+    registerService(StudentService.class, new ReferenceStudentService());
+    registerService(CourseService.class, new ReferenceCourseService());
+    // registerService(<interface name>.class, new <your implementation>());
+  }
 }
 ```
 
-**After you have implemented your factory class, be sure to put your factory class name into the file `./config.properties`. So that we can find your implementation and test.**
+In addition, please override `getUIDs` and `truncateDatabase` methods in your `Servicefactory`. These two methods can
+help SA judge your project.
+
+```java
+public class ReferenceServiceFactory extends ServiceFactory {
+
+  public ReferenceServiceFactory() {
+    registerService(StudentService.class, new ReferenceStudentService());
+    registerService(CourseService.class, new ReferenceCourseService());
+  }
+
+  /**
+   * Return sids of your group members. This method is used in final judging.
+   *
+   * @return List of sid
+   */
+  @Override
+  public List<String> getUIDs() {
+    return List.of("12010000");
+  }
+
+  /**
+   * In this method, you are required to truncate all tables of your database for this project.
+   * This method is used in automatic junit tests.
+   */
+  @Override
+  public void truncateDatabase() {
+    try {
+      Connection conn = SQLDataSource.getInstance().getSQLConnection();
+      conn.prepareStatement("truncate table course;").execute();
+      // truncate your tables
+
+      conn.close();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+**After you have implemented your factory class, be sure to put your factory class name into the
+file `./config.properties`. So that we can find your implementation and test.**
 
 ```
 serviceFactory=your.package.YourServiceFactory            // Your factory class name here.
@@ -68,19 +113,20 @@ password=postgres
 
 ### Tips
 
-Please create database with `LC_COLLATE='C'`, which provides the platform-independent sorting result.
+Please use the following SQL command, which specifies LC_COLLATE as 'C' to ensure platform-independent sorting result.
+Otherwise, you will always have a wrong sorting result.
 
-Here is a sample command:
+In addition, all sorting strings should be done in the database, not in java.
 
 ```sql
-CREATE DATABASE project2 WITH ENCODING='UTF8' LC_COLLATE = 'C';
+CREATE DATABASE your_database_name WITH ENCODING='UTF8' LC_COLLATE = 'C' TEMPLATE TEMPLATE0;
 ```
 
 See https://github.com/NewbieOrange/SUSTech-SQL-Project2-Public/issues/88,  
 
 and https://stackoverflow.com/questions/43890221/column-sorting-in-postgresql-is-different-between-macos-and-ubuntu-using-same-co
 
-### Additional requirements of interface
+### Requirements of interface
 
 #### Java
 - All `add*()` functions with int as return value should return the (presumably auto-generated) ID.
