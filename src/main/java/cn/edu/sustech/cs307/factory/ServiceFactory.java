@@ -32,5 +32,11 @@ public abstract class ServiceFactory {
         services.put(serviceClass, implementationInstance);
     }
 
+    /**
+     * Return sids of your group members. This method is used in final judging.
+     * For Example: return List.of("12110000", "114514", "1919810");
+     *
+     * @return List of sid
+     */
     public abstract List<String> getUIDs();
 }
