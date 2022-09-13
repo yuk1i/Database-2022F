@@ -39,4 +39,10 @@ public abstract class ServiceFactory {
      * @return List of sid
      */
     public abstract List<String> getUIDs();
+
+    /**
+     * In this method, you are required to truncate all tables of your database for this project.
+     * This method is used in automatic junit tests.
+     */
+    public abstract void truncateDatabase();
 }
