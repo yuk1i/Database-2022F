@@ -24,111 +24,10 @@ The structure of the interfaces is as follows.
 - Implement the `service` and `factory` interfaces to pass the base testcases.
 - Profile your implementation and find ways to speed it up.
 
-Please checkout [project_guide.md](project_guide.md) for initial guidance.
-
-Here is a reference implementation, it shows you how to implement one method of an interface. To get a service working,
-you'll have to implement **all its interfaces**
-
-*The following code is just a guide, the code interacts with database will usually be written in the DAO layer*
-
-```java
-@ParametersAreNonnullByDefault
-public class ReferenceStudentService implements StudentService {
-    /* Some codes are omitted */
-    @Override
-    public void dropCourse(int studentId, int sectionId) {
-        try (Connection connection = SQLDataSource.getInstance().getSQLConnection();
-            PreparedStatement stmt = connection.prepareStatement("call drop_course(?, ?)")) {
-            stmt.setInt(1, studentId);
-            stmt.setInt(2, sectionId);
-            stmt.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    /* Some codes are omitted */
-}
-```
-
-```java
-public class ReferenceServiceFactory extends ServiceFactory {
-  public ReferenceServiceFactory() {
-    registerService(StudentService.class, new ReferenceStudentService());
-    registerService(CourseService.class, new ReferenceCourseService());
-    // registerService(<interface name>.class, new <your implementation>());
-  }
-}
-```
-
-In addition, please override `getUIDs` and `truncateDatabase` methods in your `Servicefactory`. These two methods can
-help SA judge your project.
-
-```java
-public class ReferenceServiceFactory extends ServiceFactory {
-
-  public ReferenceServiceFactory() {
-    registerService(StudentService.class, new ReferenceStudentService());
-    registerService(CourseService.class, new ReferenceCourseService());
-  }
-
-  /**
-   * Return sids of your group members. This method is used in final judging.
-   *
-   * @return List of sid
-   */
-  @Override
-  public List<String> getUIDs() {
-    return List.of("12010000");
-  }
-
-  /**
-   * In this method, you are required to truncate all tables of your database for this project.
-   * This method is used in automatic junit tests.
-   */
-  @Override
-  public void truncateDatabase() {
-    try {
-      Connection conn = SQLDataSource.getInstance().getSQLConnection();
-      conn.prepareStatement("truncate table course;").execute();
-      // truncate your tables
-
-      conn.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
-  }
-}
-
-```
-
-**After you have implemented your factory class, be sure to put your factory class name into the
-file `./config.properties`. So that we can find your implementation and test.**
-
-```
-serviceFactory=your.package.YourServiceFactory            // Your factory class name here.
-jdbcUrl=jdbc:postgresql://localhost:5432/project2
-username=postgres
-password=postgres
-```
-
-### Tips
-
-Please use the following SQL command, which specifies LC_COLLATE as 'C' to ensure platform-independent sorting result.
-Otherwise, you will always have a wrong sorting result.
-
-In addition, all sorting strings should be done in the database, not in java.
-
-```sql
-CREATE DATABASE your_database_name WITH ENCODING='UTF8' LC_COLLATE = 'C' TEMPLATE TEMPLATE0;
-```
-
-See https://github.com/NewbieOrange/SUSTech-SQL-Project2-Public/issues/88,  
-
-and https://stackoverflow.com/questions/43890221/column-sorting-in-postgresql-is-different-between-macos-and-ubuntu-using-same-co
+Please check out [project_guide.md](project_guide.md) for initial guidance.
 
 ### Requirements of interface
 
-#### Java
 - All `add*()` functions with int as return value should return the (presumably auto-generated) ID.
 - All arguments are guaranteed to be non-null, unless marked as @Nullable.
 - All return values (and their fields) should be non-null, unless explicitly documented otherwise. If a list/map is
@@ -147,13 +46,19 @@ and https://stackoverflow.com/questions/43890221/column-sorting-in-postgresql-is
 
 #### Java-specific rules
 
-- You should **NOT** modify or add any class in package `cn.edu.sustech.cs307`. Use another package for your
-  implementations.
+- Your package should **NOT** start with `cn.`, i.e., your package shouldn't locate in `src/main/java/cn/` folder or its
+  subfolder.
+- You are free to modify any classes under package `cn.edu.sustech.cs307` for debugging.
+  But we will reset `src/main/java/cn/` folder in your submission to this version. So after resetting
+  the `cn.edu.sustech.cs307` package, your implementation should still work fine.
+
+  For example:
+  - You can override `toString` method for classes in `cn.edu.sustech.cs307.dto`.
+  - You can modify the judge program `cn.edu.sustech.cs307.util.ProjectJudge` to print your wrong cases.
+  - You can not modify constructors for `cn.edu.sustech.cs307.dto`.
 - You should **NOT** extend any class in package `cn.edu.sustech.cs307.dto`.
 - In this project, we use Maven to manage dependent libraries. If you want to introduce a new library, you need to
   record it in `pom.xml`. Your dependencies should be downloadable from the Maven Central repository.
-
-
 
 ## 2. What to deliver?
 
@@ -187,9 +92,3 @@ and https://stackoverflow.com/questions/43890221/column-sorting-in-postgresql-is
 
 - **(Optional) DIFFERENT WAYS SAME GOAL?** Can you find other ways to implement these functionalities? Are they **BETTER/WORSE/USECASE-RELATED?** Please do share us your amazing ideas.
 
-
-### Project Timeline
-
-Code Submission Deadline: **December 31st, 2021 18:30**
-
-Presentation Time: **December 31st, 2021** in Lab class
